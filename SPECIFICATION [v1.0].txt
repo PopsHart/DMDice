@@ -1,25 +1,35 @@
 # DMDice
  Dungeon Master Dice Roller
 
-The main function to be absorbed Tony created. It is accessed by URL and returns an array of data on each dice requested. As if the player
-had "rolled" x number of die.
+FUNCTIONALITY:  
+	Accesses a URL served by AHART, which reads how many of each dice the user wants rolled for. 
+	For example, in backgammon, you would want to roll two (2) D6 dice.  This function is specifically 
+	designed to be used by D&D Dungeon Masters / Players, but can be used in many other gaming apps.
 
-This is a strawman prototype to be modified with agreement with Tony on the func parms and return dataset(s).
-
-	DMDice(smallint D6, smallint D8, smallint D10, smallint D12) RETURNS Array(?)
-
-		D6  = # of six-sided dice to roll 
-		D8  = # of eight-sided dice to roll 
-		D10 = # of ten-sided dice to roll 
-		D12 = # of twelve-sided dice to roll 
+DEFAULT SYNTAX:
+	public enum DMDice (
+		D4    = 0, -- # of 4-sided dice to roll, default is 0 
+		D6    = 2, -- # of 6-sided dice to roll, default is 2 for base "Roll" button functionality
+		D8    = 0, -- # of 8-sided dice to roll, default is 0
+		D10   = 0, -- # of 10-sided dice to roll, default is 0
+		D12   = 0, -- # of 12-sided dice to roll, default is 0
+		D20   = 0, -- # of 20-sided dice to roll, default is 0
+		D69   = 0, -- # of 69-sided dice to roll, default is 0
+		D100  = 0, -- # of 100-sided dice to roll, default is 0
+		D1000 = 0, -- # of 1000-sided dice to roll, default is 0
+	)
+	returns a JSON (JavaScript Object Notation) object
 	
-Example:	DMDice(4,3,2,1) 
-			asks the DM to roll (4) 6-sided, (3) 8-sided, (2) 10-sided and (1) 12-sided Dice
+DEV NOTE:		
+	Expanded functionality in future would be to allow the user to set their own defaults for 
+	just hitting "Roll" in the app. Maybe a DM likes to roll (3) 4-sided dice a LOT in their campaign.  
+	They could set the default "Roll" button's action (request) to be (3) 4-sided dice. 
 
-SAMPLE RETURN DATA:
-
-	D6  -> 03,05,06,02,01 
-	D8  -> 07,03,01
-	D10 -> 10,07
-	D12 -> 12
-
+EXAMPLES:	
+	public enum DMDice (D4=1,D6=10,D69=69) -- Roll (1) 4-sided, (10) 6-sided, (69) 69-sided and (1) 12-sided Dice
+	
+	returns the roll(s) for each dice type requested, via a JSON object. 
+	
+	In this case, JSON object would have three objects inside it named D4,D6,D69. Object D4 would have 1 roll 
+	contained, D6 would have 10 rolls contained, and D69 would have 69 rolls in its container.
+	
