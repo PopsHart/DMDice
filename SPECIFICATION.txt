@@ -1,0 +1,25 @@
+# DMDice
+ Dungeon Master Dice Roller
+
+We now have an Azure function hosted in the cloud that allows us to roll dice.
+
+It is accessed by URL and returns an array of data on each dice requested. As if the player had "rolled" x number of die.
+
+		D2    = # of Coins to "flip"
+		D4    = # of four-sided dice to roll
+		D6    = # of six-sided dice to roll 
+		D8    = # of eight-sided dice to roll 
+		D10   = # of ten-sided dice to roll 
+		D12   = # of twelve-sided dice to roll
+		D20   = # of twenty-sided dice to roll
+		D69   = # of sixty-nine (nice) sided dice to roll
+		D100  = # of one hundredd-sided dice to roll
+		D1000 = # of one thousand-sided dice to roll
+	
+Example:	{Url}\api\DiceRoll?code={Access Code}&D6=4&D8=3&D10=2&D12=1
+			asks the DM to roll (4) 6-sided, (3) 8-sided, (2) 10-sided and (1) 12-sided Dice
+
+RETURN DATA TYPE: JSON
+SAMPLE RETURN DATA: 
+	{"D2":[],"D4":[],"D6":[2,2,1,4],"D8":[5,6,5],"D10":[6,1],"D12":[11],"D20":[],"D69":[],"D100":[],"D1000":[]}
+
